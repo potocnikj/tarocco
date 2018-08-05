@@ -1,6 +1,7 @@
 .table {
   table-layout:fixed;
   width: 100%;
+  margin: 0;
 }
 .section--disabled {
   opacity: .2;
@@ -26,7 +27,7 @@
 .fixed_header tbody{
   display:block;
   overflow:auto;
-  height:calc(100vh - 280px);
+  height:calc(100vh - 250px);
 }
 .fixed_header thead tr{
   display:block;
@@ -36,4 +37,10 @@
   position: fixed;
   top: 50%;
   left: 50%;
+}
+
+.main-sb-area {
+  margin: 0;
+  padding: 0;
+  padding-top: 55px;
 }

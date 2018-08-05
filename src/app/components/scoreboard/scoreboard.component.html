@@ -1,6 +1,6 @@
 
 <div class="container-fluid" *ngIf="scoreBoardService.roundList" [class.section--disabled]="loading">
-  <div class="box">
+  <div class="box main-sb-area">
 
     <h2 class="is-5 has-text-info has-text-centered is-uppercase tarocco-game-title">{{gameService.currentGame.name}}</h2>
     <div class="column">
@@ -78,7 +78,7 @@
 <ng2-toasty></ng2-toasty>
 
 <script>
-  // Change the selector if needed
+// dynamic table header width
 var $table = $('table'),
     $bodyCells = $table.find('tbody tr:first').children(),
     colWidth;
