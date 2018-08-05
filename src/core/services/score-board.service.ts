@@ -10,7 +10,6 @@ import { Player } from '../models/player';
 import { AuthenticationService } from './authentication.service';
 import { Game } from '../models/game';
 import { GameService } from './game.service';
-import { BaseService } from './base.service';
 
 @Injectable()
 export class ScoreBoardService {
@@ -57,7 +56,12 @@ export class ScoreBoardService {
   }
 
   public addRound(round: Round): void {
-    this.roundList.push(round);
+    if ((this.lastRound.roundNumber + 1) == round.roundNumber) {        
+      this.roundList.push(round);
+    }
+    else{
+      this.getScoreBoard(this.gameService.currentGame.gameId);
+    }
   }
 
   public removeLastRound(round: Round): void {

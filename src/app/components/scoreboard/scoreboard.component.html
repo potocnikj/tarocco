@@ -52,9 +52,10 @@
           <th [style.width.vw]="100 / getNumberOfPlayers()">R</th> <!-- TODO padding not ok. figure it out--> 
           <th [style.width.vw]="100 / getNumberOfPlayers()"></th>
           <th [style.width.vw]="100 / getNumberOfPlayers()" *ngFor="let lastRoundResult of scoreBoardService.lastRound.roundResults" class="has-text-info">
-          <span class="tarocco-radelci" *ngFor="let radelc of lastRoundResult.radelci">
-            <i class="fa fa-xs fa-circle-thin" aria-hidden="true" *ngIf="!radelc"></i>
-          </span>
+        
+            <div *ngIf="lastRoundResult.playerRadelcCount !== lastRoundResult.playerRadelcUsed" 
+            class="numberCircle">{{lastRoundResult.playerRadelcCount - lastRoundResult.playerRadelcUsed}}</div>
+
           </th>
         </tr>
         </thead>
