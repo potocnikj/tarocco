@@ -8,7 +8,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastyModule } from 'ng2-toasty';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+/**
+ * Material
+ */
+import {  MaterialModule } from './material/material.module';
 /**
  * Components
  */
@@ -78,7 +81,7 @@ import { DetailedViewComponent } from './components/scoreboard/detailed-view/det
     FormsModule,
     ToastyModule,
     NgxChartsModule,
-    BrowserAnimationsModule,
+    MaterialModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
