@@ -1,4 +1,4 @@
-<div class="container is is-fluid statistics-container" *ngIf="gameService.currentGame && statTabs">
+<div class="container is is-fluid statistics-container" *ngIf="gameService.currentGame && !loading">
   <h2 class="subtitle is-5 has-text-info has-text-centered is-uppercase tarocco-game-title t-stat-margin">{{gameService.currentGame.name}}</h2>
   <div class="column">
     <button mat-raised-button aria-haspopup="true">
@@ -16,7 +16,7 @@
   <div class="container">
     <mat-tab-group mat-stretch-tabs>
       <mat-tab label="AVG P.P.R">
-        <app-graph class="tarocco-stat-tab" [statistics]="statistics" *ngIf="activeTab && activeTab.id === 2"></app-graph>
+        <app-graph class="tarocco-stat-tab" [statistics]="statistics"></app-graph>
       </mat-tab>
       <mat-tab label="Prikolica">
         <app-graph class="tarocco-stat-tab-graph" [statistics]="statistics" [graph]="'passive'" [type]="'pie'"></app-graph>
@@ -31,3 +31,6 @@
   </div>
 </div>
 
+<div class="center-screen" *ngIf="loading">
+  <mat-spinner></mat-spinner>
+</div>

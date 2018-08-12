@@ -228,3 +228,13 @@ $dark-theme:   mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
 
 @import '../node_modules/bulma-extensions/bulma-steps/dist/bulma-steps.min.css';
 @import '../node_modules/bulma-extensions/bulma-tagsinput/dist/bulma-tagsinput.min.css';
+
+
+.center-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+}
