@@ -11,6 +11,7 @@ import { HttpService } from '../../../core/services/http.service';
 export class StatisticsComponent implements OnInit {
 
   public teamMode = true;
+  public teamDisplay = 'Ekipno';
   public statistics: Array<GameStatistics>;
   public statTabs = [
     {id: 2, name: 'AVG P.P.R', active: true},
@@ -30,6 +31,7 @@ export class StatisticsComponent implements OnInit {
       return;
 
     this.teamMode = teamMode;
+    this.teamDisplay = teamMode ? 'Ekipno' : 'Igra';
     this.getStatistics();
   }
 

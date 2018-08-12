@@ -1,25 +1,33 @@
 <div class="container is is-fluid statistics-container" *ngIf="gameService.currentGame && statTabs">
   <h2 class="subtitle is-5 has-text-info has-text-centered is-uppercase tarocco-game-title t-stat-margin">{{gameService.currentGame.name}}</h2>
-  <p class="panel-tabs">
-    <a [class.is-active]="teamMode" (click)="setTeamMode(true)" class="tarocco-stat-tab">ekipa</a>
-    <a [class.is-active]="!teamMode" (click)="setTeamMode(false)" class="tarocco-stat-tab">igra</a>
-  </p>
   <div class="column">
-    <button class="button" aria-haspopup="true">
+    <button mat-raised-button aria-haspopup="true">
       <app-search (gameChanged)="getStatistics()"></app-search>
     </button>
+    <button mat-raised-button [matMenuTriggerFor]="menu">{{teamDisplay}}</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="setTeamMode(true)">Ekipa</button>
+      <button mat-menu-item (click)="setTeamMode(false)">Igra</button>
+    </mat-menu>
   </div>
+  <div class="column">
 
+  </div>
   <div class="container">
-    <div class="tabs is-centered is-small">
-      <ul>
-        <li [class.is-active]="tab.active" *ngFor="let tab of statTabs" (click)="setActiveTab(tab)"><a class="tarocco-stat-tab">{{tab.name}}</a>
-        </li>
-      </ul>
-    </div>
-    <app-graph class="tarocco-stat-tab" [statistics]="statistics" *ngIf="activeTab && activeTab.id === 2"></app-graph>
-    <app-graph class="tarocco-stat-tab-graph" [statistics]="statistics" [graph]="'passive'" [type]="'pie'" *ngIf="activeTab && activeTab.id === 1"></app-graph>
-    <app-graph class="tarocco-stat-tab-graph" [statistics]="statistics" [graph]="'active'" [type]="'pie'" *ngIf="activeTab && activeTab.id === 3"></app-graph>
-    <app-stat-table class="tarocco-stat-tab" [statistics]="statistics" *ngIf="activeTab && activeTab.id === 0"></app-stat-table>
+    <mat-tab-group mat-stretch-tabs>
+      <mat-tab label="AVG P.P.R">
+        <app-graph class="tarocco-stat-tab" [statistics]="statistics" *ngIf="activeTab && activeTab.id === 2"></app-graph>
+      </mat-tab>
+      <mat-tab label="Prikolica">
+        <app-graph class="tarocco-stat-tab-graph" [statistics]="statistics" [graph]="'passive'" [type]="'pie'"></app-graph>
+      </mat-tab>
+      <mat-tab label="Vodilni">
+        <app-graph class="tarocco-stat-tab-graph" [statistics]="statistics" [graph]="'active'" [type]="'pie'"></app-graph>
+      </mat-tab>
+      <mat-tab label="Splošno">
+        <app-stat-table class="tarocco-stat-tab" [statistics]="statistics"></app-stat-table>
+      </mat-tab>
+    </mat-tab-group>
   </div>
 </div>
+
