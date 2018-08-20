@@ -136,10 +136,24 @@ export class ScoreboardComponent implements OnInit {
     if (this.hub && this.gameService.currentGame.gameId !== this.hub.gameId) {
       this.hub.changeGame(this.gameService.currentGame.gameId);
     } else if (!this.hub) {
-      this.hub = new ScoreboardHub(this.gameService.currentGame.gameId);
+      this.hub = new ScoreboardHub(this.gameService.currentGame.gameId, this.scoreBoardService);
 
       this.hub.onAddRound((round) => {
         this.scoreBoardService.addRound(Round.init(round));
+        this.updateScoreBoard();
+
+        this.toastService.addToast('Obvestilo', 'Nova runda uspešno dodana!', 'success');
+        setTimeout(() => { // Ideally we could know when ngFor finished rendering and then scroll. But we don't. So this.
+         this.scrollToBottom();
+        }, 100);
+      });
+
+      this.hub.onAddRounds((rounds: Round[]) => {
+        console.log('onAddRounds param: rounds', rounds);
+        rounds.forEach(round => {  
+                this.scoreBoardService.addRound(Round.init(round));
+        });
+
         this.updateScoreBoard();
 
         this.toastService.addToast('Obvestilo', 'Nova runda uspešno dodana!', 'success');

@@ -56,8 +56,9 @@ export class ScoreBoardService {
   }
 
   public addRound(round: Round): void {
-    if ((this.lastRound.roundNumber + 1) == round.roundNumber) {        
+    if (this.lastRound == null || (this.lastRound.roundNumber + 1) == round.roundNumber) {        
       this.roundList.push(round);
+      this.lastRound = round;
     }
     else{
       this.getScoreBoard(this.gameService.currentGame.gameId);

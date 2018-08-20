@@ -9,7 +9,7 @@
         "/index.html",
         "/*.css",
         "/*.js",
-        "/*woff2.*"
+        "/*.woff2*"
       ]
     }
   }, {
